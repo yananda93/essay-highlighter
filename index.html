@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Essay Theme Highlighter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* background-color: #f4f4f4; */
+    }
+
+    .wrapper {
+      display: flex;
+      /* max-width: 1200px; */
+      margin: auto;
+    }
+
+
+    .sidebar {
+      width: 250px;
+      /* height: 80vh; */
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      padding: 30px;
+
+      /* background-color: #ffffff; */
+      
+      overflow-y: auto;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .theme-controls {
+      margin-bottom: 15px;
+    }
+
+    .theme-controls button {
+      margin-right: 10px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+
+    .theme-controls button.active-button {
+      background-color: #333;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .theme-label {
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 5px;
+      /* font-weight: bold; */
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: #f4f4f4;
+    }
+
+    .theme-label.active {
+      border: 2px solid #333;
+    }
+
+    .highlight-0 { background-color: #fff3cd; }
+    .highlight-1 { background-color: #d1ecf1; }
+    .highlight-2 { background-color: #d4edda; }
+    .highlight-3 { background-color: #f8d7da; }
+
+    .hidden {
+    background-color: inherit !important;
+    font-weight: normal !important;
+    color: inherit !important;
+    border: none !important;
+  }
+
+
+    .content {
+      flex: 1;
+      padding: 15px 30px;
+      /* background-color: #fff; */
+      border-left: 2px solid #ddd;
+      /* box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); */
+      /* height: 100vh; */
+    }
+
+    .content h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .content p {
+      /* margin-bottom: 1.5em; */
+      text-align: justify;
+    }
+
+    .content span {
+      /* font-weight: bold; */
+      /* padding: 2px 4px; */
+      border-radius: 3px;
+    }
+    .theme-controls button.active-button {
+  background-color: #777777;
+  color: #fff;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="sidebar" id="theme-sidebar">
+      <h2>Main Themes</h2>
+      <div class="theme-controls">
+        <button id="show-all">Show All</button>
+        <button id="hide-all">Hide All</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- <h1>Personal Essay</h1> -->
+      <div id="essay">
+        <p>Ever since I was little I’ve been captivated by the world around me: the squirrels in my backyard, constellations that adorned the night sky, and trees whose roots form communities spanning hundreds of miles. Every week at the library I’d check out as many animal fact books as I could carry; books became my way of exploring the world until I could experience it myself.</p>
+        <p>Once I learned about the life of Jane Goodall, I dreamed of following in her footsteps: going away for years to live in the wild and study animals. The grassy Savannah, coral reefs deep underwater, and the jungles of the Amazon called for me to discover their secrets. I spent hours crouched in the grass or behind trees with an iPad, waiting to get the perfect shot of a grasshopper or cardinal for my own books that I would write about my travels to the great unknown land of my backyard.</p>
+        <p>Since then, I’ve changed in many ways: I’ve moved to New York, made new friends, and dyed my hair, but I never lost my imaginative spirit and love for learning. Going to a small school there were few options for Science electives, so I sought other ways to explore new areas. I discovered our school had a Science Olympiad team and knew I’d feel right at home; It strengthened the sense of wonder studying science brought me when I was younger. I could be an Astronomer exploring the creation of the universe, a Forensic Scientist examining evidence to solve a crime, or a Geologist studying the rocks and minerals that form our home planet; Every day presented me with new challenges and adventures.</p>
+        <p>Through all the time I spent with my teammates studying and building together, we became an incredibly close-knit team. It was the first time I made friends who shared the same nerdy interests I did. Some of my favorite memories in high school were running tests to perfect the design of our car, studying astronomy facts by pretending we were Jeopardy contestants, and the excitement we all felt seeing our teammates succeed. I’m fortunate to have worked with so many incredible people: I got to appreciate the unique perspectives and strengths of each person, and I’m proud to say they’ve become some of my best friends.</p>
+        <p>In astronomy, my partner Isabella was amazing at memorizing facts and understanding the intricate details of a topic whereas I was good at understanding and applying general concepts. Dividing the work allowed us to support each other’s weaknesses and let our strengths shine. By communicating to understand how we could support each other, we became partners working together towards a common goal instead of just two people who both happen to be participating in the same event, allowing us to accomplish more than we ever could have on our own.</p>
+        <p>I used to think the key to success was personal dedication because I was used to working alone to accomplish my goals. I believed the team would succeed if each person became an expert in their events, but it was communicating with each other and learning to work well as a team instead of as individuals that allowed us to succeed. No great feat or discovery was the work of an individual. From flying to the moon to sequencing the human genome, it took thousands of people working together to make it possible. I never would’ve made hundreds of amazing memories or gained a whole new perspective on the world we live in without my teammates.</p>
+        <p>At eight years old I thought I had the world at my fingertips, but as I’ve grown, my horizons grew with me. Although I’m no longer traveling the world with nothing but my trusty books and imagination, I’m still always seeking out my next adventure, and now I know I’ll have my teammates by my side to support me.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script>
+        const themeData = {
+      themes: [
+        {
+          theme: "Curiosity and Passion for Science",
+          excerpts: [
+            "Ever since I was little I’ve been captivated by the world around me: the squirrels in my backyard, constellations that adorned the night sky, and trees whose roots form communities spanning hundreds of miles.",
+            "Once I learned about the life of Jane Goodall, I dreamed of following in her footsteps: going away for years to live in the wild and study animals.",
+            "Going to a small school there were few options for Science electives, so I sought other ways to explore new areas."
+          ]
+        },
+        {
+          theme: "Imagination and Exploration",
+          excerpts: [
+            "Books became my way of exploring the world until I could experience it myself.",
+            "I spent hours crouched in the grass or behind trees with an iPad, waiting to get the perfect shot of a grasshopper or cardinal for my own books that I would write about my travels to the great unknown land of my backyard.",
+            "Although I’m no longer traveling the world with nothing but my trusty books and imagination, I’m still always seeking out my next adventure, and now I know I’ll have my teammates by my side to support me."
+          ]
+        },
+        {
+          theme: "Teamwork and Collaboration",
+          excerpts: [
+            "Through all the time I spent with my teammates studying and building together, we became an incredibly close-knit team.",
+            "By communicating to understand how we could support each other, we became partners working together towards a common goal instead of just two people who both happen to be participating in the same event, allowing us to accomplish more than we ever could have on our own.",
+            "It was communicating with each other and learning to work well as a team instead of as individuals that allowed us to succeed."
+          ]
+        },
+        {
+          theme: "Personal Growth and Learning from Others",
+          excerpts: [
+            "Since then, I’ve changed in many ways: I’ve moved to New York, made new friends, and dyed my hair, but I never lost my imaginative spirit and love for learning.",
+            "I used to think the key to success was personal dedication because I was used to working alone to accomplish my goals.",
+            "I never would’ve made hundreds of amazing memories or gained a whole new perspective on the world we live in without my teammates."
+          ]
+        }
+      ]
+    };
+    const themeSidebar = document.getElementById("theme-sidebar");
+    // const legendBox = document.getElementById("legend");
+    const essayContainer = document.getElementById("essay");
+
+    themeData.themes.forEach((theme, index) => {
+      const label = document.createElement("div");
+      label.className = `theme-label`;
+      label.dataset.themeIndex = index;
+      label.textContent = theme.theme;
+      themeSidebar.appendChild(label);
+
+    });
+
+    // Highlight excerpts in essay content already in HTML
+    themeData.themes.forEach((theme, index) => {
+      theme.excerpts.forEach(excerpt => {
+
+        
+        const safeExcerpt = excerpt.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const regex = new RegExp(safeExcerpt, 'g');
+        essayContainer.innerHTML = essayContainer.innerHTML.replace(
+          regex,
+          `<span class="theme-excerpt-${index}">${excerpt}</span>`
+        );
+      });
+    });
+
+    document.querySelectorAll(".theme-label").forEach(label => {
+  label.addEventListener("click", () => {
+    const index = label.dataset.themeIndex;
+
+    // label.classList.toggle("active");
+    label.classList.toggle(`highlight-${index}`);
+
+    document.querySelectorAll(`.theme-excerpt-${index}`).forEach(el => {
+      // el.classList.toggle("hidden");
+      el.classList.toggle(`highlight-${index}`);
+    });
+  });
+});
+
+// document.getElementById("show-all").addEventListener("click", () => {
+//   document.querySelectorAll(".theme-label").forEach((label, index) => {
+//     label.classList.add(`highlight-${index}`);
+//   });
+//   themeData.themes.forEach((_, index) => {
+//     document.querySelectorAll(`.theme-excerpt-${index}`).forEach(el => {
+//       el.classList.remove("hidden");
+//       el.classList.add(`highlight-${index}`);
+//     });
+//   });
+// });
+document.getElementById("show-all").addEventListener("click", () => {
+  document.getElementById("show-all").classList.add("active-button");
+  document.getElementById("hide-all").classList.remove("active-button");
+
+  document.querySelectorAll(".theme-label").forEach((label, index) => {
+    label.classList.add(`highlight-${index}`);
+  });
+  themeData.themes.forEach((_, index) => {
+    document.querySelectorAll(`.theme-excerpt-${index}`).forEach(el => {
+      el.classList.remove("hidden");
+      el.classList.add(`highlight-${index}`);
+    });
+  });
+});
+document.getElementById("hide-all").classList.add("active-button");
+
+// document.getElementById("hide-all").addEventListener("click", () => {
+//   document.querySelectorAll(".theme-label").forEach((label, index) => {
+//     label.classList.remove( `highlight-${index}`);
+//   });
+//   themeData.themes.forEach((_, index) => {
+//     document.querySelectorAll(`.theme-excerpt-${index}`).forEach(el => {
+//       el.classList.add("hidden");
+//       el.classList.remove(`highlight-${index}`);
+//     });
+//   });
+// });
+document.getElementById("hide-all").addEventListener("click", () => {
+  document.getElementById("hide-all").classList.add("active-button");
+  document.getElementById("show-all").classList.remove("active-button");
+
+  document.querySelectorAll(".theme-label").forEach((label, index) => {
+    label.classList.remove("active", `highlight-${index}`);
+  });
+  themeData.themes.forEach((_, index) => {
+    document.querySelectorAll(`.theme-excerpt-${index}`).forEach(el => {
+      el.classList.add("hidden");
+      el.classList.remove(`highlight-${index}`);
+    });
+  });
+});
+  </script>
+</body>
+</html>
